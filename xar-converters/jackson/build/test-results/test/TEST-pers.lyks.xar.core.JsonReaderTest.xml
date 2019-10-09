@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pers.lyks.xar.core.JsonReaderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-10-09T18:21:02" hostname="Rance-Pro.local" time="0.323">
+  <properties/>
+  <testcase name="read()" classname="pers.lyks.xar.core.JsonReaderTest" time="0.323"/>
+  <system-out><![CDATA[?[33m2019-10-10 02:21:03?[0;39m ?[39mDEBUG?[0;39m ?[35m[Test worker]?[0;39m ?[32mcom.jayway.jsonpath.internal.path.CompiledPath?[0;39m$?[34mCompiledPath.java:47?[0;39m - ?[36mEvaluating path: $['imageActionName']
+?[0;39m?[33m2019-10-10 02:21:03?[0;39m ?[39mDEBUG?[0;39m ?[35m[Test worker]?[0;39m ?[32mcom.jayway.jsonpath.internal.path.CompiledPath?[0;39m$?[34mCompiledPath.java:47?[0;39m - ?[36mEvaluating path: $['imageAllowFiles']
+?[0;39m?[33m2019-10-10 02:21:03?[0;39m ?[39mDEBUG?[0;39m ?[35m[Test worker]?[0;39m ?[32mcom.jayway.jsonpath.internal.path.CompiledPath?[0;39m$?[34mCompiledPath.java:47?[0;39m - ?[36mEvaluating path: $['imageCompressEnable']
+?[0;39m?[33m2019-10-10 02:21:03?[0;39m ?[39mDEBUG?[0;39m ?[35m[Test worker]?[0;39m ?[32mcom.jayway.jsonpath.internal.path.CompiledPath?[0;39m$?[34mCompiledPath.java:47?[0;39m - ?[36mEvaluating path: $['imageCompressBorder']
+?[0;39m?[33m2019-10-10 02:21:03?[0;39m ?[39mDEBUG?[0;39m ?[35m[Test worker]?[0;39m ?[32mcom.jayway.jsonpath.internal.path.CompiledPath?[0;39m$?[34mCompiledPath.java:47?[0;39m - ?[36mEvaluating path: $['scrawlMaxSize']
+?[0;39m?[33m2019-10-10 02:21:03?[0;39m ?[39mDEBUG?[0;39m ?[35m[Test worker]?[0;39m ?[32mcom.jayway.jsonpath.internal.path.CompiledPath?[0;39m$?[34mCompiledPath.java:47?[0;39m - ?[36mEvaluating path: $['snap']
+?[0;39m]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

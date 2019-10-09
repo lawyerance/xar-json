@@ -1,0 +1,70 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "io.freefair.gradle:lombok-plugin:4.1.1"
+
+        classpath "gradle.plugin.com.github.spotbugs:spotbugs-gradle-plugin:2.0.0"
+
+    }
+}
+
+apply plugin: 'idea'
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+
+allprojects {
+    apply from: rootProject.file("gradle/dependencies.gradle")
+
+}
+subprojects {
+
+    apply plugin: 'java'
+//    apply plugin: "io.freefair.lombok"
+    apply plugin: "com.github.spotbugs"
+
+    sourceCompatibility = JavaVersion.VERSION_12
+    targetCompatibility = JavaVersion.VERSION_12
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation libraries.jsonpath
+
+        implementation libraries.slf4j
+
+        testImplementation libraries.jupiter
+
+        compileOnly libraries.lombok
+
+        annotationProcessor libraries.lombok
+
+        testCompile libraries.logback
+
+    }
+
+    test {
+        useJUnitPlatform()
+//        filter {
+//            includeTestsMatching = "*test*"
+//        }
+    }
+
+    clean {
+        delete "${buildDir}"
+    }
+}

@@ -1,0 +1,7 @@
+Õ[33m2019-10-10 02:21:03[0;39m [39mDEBUG[0;39m [35m[Test worker][0;39m [32mcom.jayway.jsonpath.internal.path.CompiledPath[0;39m$[34mCompiledPath.java:47[0;39m - [36mEvaluating path: $['imageActionName']
+[0;39mÕ[33m2019-10-10 02:21:03[0;39m [39mDEBUG[0;39m [35m[Test worker][0;39m [32mcom.jayway.jsonpath.internal.path.CompiledPath[0;39m$[34mCompiledPath.java:47[0;39m - [36mEvaluating path: $['imageAllowFiles']
+[0;39mÙ[33m2019-10-10 02:21:03[0;39m [39mDEBUG[0;39m [35m[Test worker][0;39m [32mcom.jayway.jsonpath.internal.path.CompiledPath[0;39m$[34mCompiledPath.java:47[0;39m - [36mEvaluating path: $['imageCompressEnable']
+[0;39mÙ[33m2019-10-10 02:21:03[0;39m [39mDEBUG[0;39m [35m[Test worker][0;39m [32mcom.jayway.jsonpath.internal.path.CompiledPath[0;39m$[34mCompiledPath.java:47[0;39m - [36mEvaluating path: $['imageCompressBorder']
+[0;39mÓ[33m2019-10-10 02:21:03[0;39m [39mDEBUG[0;39m [35m[Test worker][0;39m [32mcom.jayway.jsonpath.internal.path.CompiledPath[0;39m$[34mCompiledPath.java:47[0;39m - [36mEvaluating path: $['scrawlMaxSize']
+[0;39mÊ[33m2019-10-10 02:21:03[0;39m [39mDEBUG[0;39m [35m[Test worker][0;39m [32mcom.jayway.jsonpath.internal.path.CompiledPath[0;39m$[34mCompiledPath.java:47[0;39m - [36mEvaluating path: $['snap']
+[0;39m

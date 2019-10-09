@@ -1,0 +1,12 @@
+group 'pers.lyks'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+
+    mavenCentral()
+}
+
+dependencies {
+
+}

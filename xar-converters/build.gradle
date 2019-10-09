@@ -1,0 +1,17 @@
+allprojects {
+    apply plugin: 'java'
+
+    dependencies {
+        implementation project(":xar-core")
+    }
+}
+subprojects {
+    repositories {
+        mavenLocal()
+
+        mavenCentral()
+    }
+    dependencies {
+        implementation libraries."$project.name"
+    }
+}

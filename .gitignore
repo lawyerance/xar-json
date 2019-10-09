@@ -1,19 +1,16 @@
 ### Maven template
-target/
+**/target/
 
-.mvn/
+**/.mvn/
 
 ### JetBrains template
 
-.idea/
-
-# Gradle
-.idea/
+**/.idea/
 *.iml
 *.ipr
 *.iws
-out/
-.idea_modules/
+**/out/
+**/.idea_modules/
 
 ### Java template
 # Compiled class file
@@ -26,7 +23,7 @@ out/
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
-.mtj.tmp/
+**/.mtj.tmp/
 
 # Package Files #
 *.jar
@@ -43,17 +40,17 @@ hs_err_pid*
 
 ### Gradle template
 .gradle
-/build/
+**/build/
 
 ### Eclipse template
 .metadata
-bin/
-tmp/
+**/bin/
+**/tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
-.settings/
+**/.settings/
 
 
 

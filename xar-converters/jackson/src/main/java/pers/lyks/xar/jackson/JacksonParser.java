@@ -1,4 +1,4 @@
-package pers.lyks.xar.jaskson;
+package pers.lyks.xar.jackson;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +9,7 @@ import net.minidev.json.JSONArray;
 import pers.lyks.xar.XarException;
 import pers.lyks.xar.core.BeanMetadata;
 import pers.lyks.xar.core.FieldMetadata;
-import pers.lyks.xar.core.JsonInvoke;
+import pers.lyks.xar.core.Parser;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -21,12 +21,12 @@ import java.util.Map;
  * @version 1.0 2019-10-03
  */
 @Slf4j
-public class JacksonJsonInvoke implements JsonInvoke {
+public class JacksonParser implements Parser {
 
 
     private ObjectMapper objectMapper;
 
-    public JacksonJsonInvoke(ObjectMapper objectMapper) {
+    public JacksonParser(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
@@ -53,7 +53,7 @@ public class JacksonJsonInvoke implements JsonInvoke {
             return BooleanNode.valueOf((Boolean) obj);
         }
 
-        // nunber
+        // number
         if (source.isAssignableFrom(Integer.class)) {
             return new IntNode((int) obj);
         }

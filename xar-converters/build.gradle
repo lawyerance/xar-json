@@ -3,6 +3,8 @@ allprojects {
 
     dependencies {
         implementation project(":xar-core")
+
+        testImplementation project(path: ":xar-core", configuration: 'tests')
     }
 }
 subprojects {

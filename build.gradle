@@ -53,6 +53,10 @@ subprojects {
 
         annotationProcessor libraries.lombok
 
+        testCompileOnly libraries.lombok
+
+        testAnnotationProcessor libraries.lombok
+
         testCompile libraries.logback
 
     }

@@ -6,15 +6,8 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.ParseContext;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -25,9 +18,9 @@ import java.util.function.Supplier;
 public class JsonReader {
     private final Configuration conf;
     private ParseContext context;
-    private JsonInvoke invoke;
+    private Parser invoke;
 
-    public JsonReader(Configuration conf, JsonInvoke invoke) {
+    public JsonReader(Configuration conf, Parser invoke) {
         this.conf = conf;
         this.context = JsonPath.using(conf);
         this.invoke = invoke;

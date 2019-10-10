@@ -22,7 +22,7 @@
   "scrawlInsertAlign": "none",
   "snap": {
     "snapscreenActionName": "uploadimage",
-    "snapscreenPathFormat": "\/ueditor\/php\/upload\/image\/{yyyy}{mm}{dd}\/{time}{rand:6}",
+    "snapscreenTime": "2019-10-10T19:20:20.000+08:00",
     "snapscreenUrlPrefix": "",
     "snapscreenInsertAlign": "none",
     "catcherLocalDomain": [
@@ -30,7 +30,7 @@
       "localhost",
       "img.baidu.com"
     ],
-    "catcherActionName": "catchimage",
+    "catcherTime": "20191010 202021",
     "catcherFieldName": "source",
     "catcherPathFormat": "\/ueditor\/php\/upload\/image\/{yyyy}{mm}{dd}\/{time}{rand:6}",
     "catcherUrlPrefix": "",

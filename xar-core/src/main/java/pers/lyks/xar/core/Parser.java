@@ -9,6 +9,6 @@ import java.io.Serializable;
  * @author lawyerance
  * @version 1.0 2019-10-03
  */
-public interface JsonInvoke extends Serializable {
+public interface Parser extends Serializable {
     <T> T deserialize(DocumentContext context, BeanMetadata<T> t) throws XarException;
 }

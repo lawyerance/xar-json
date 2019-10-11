@@ -10,36 +10,35 @@ import pers.lyks.xar.bean.PropertiesBean;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Properties;
 
 /**
  * @author lawyerance
  * @version 1.0 2019-10-09
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class PropertyCacheTest {
+class XarFactoryTest {
 
     @Test
     @Order(1)
     void cacheFromAnnotation() {
-        PropertyCache.cacheFromAnnotation(AnnotationBean.class);
-        Assert.assertNotNull(PropertyCache.get(AnnotationBean.class));
+        XarFactory.registerByAnnotation(AnnotationBean.class);
+        Assert.assertNotNull(XarFactory.read(AnnotationBean.class));
     }
 
     @Test
     @Order(2)
     void cacheFromProperty() {
-        Map<String, String> map = new HashMap<>();
+        Properties map = new Properties();
         map.put("str", "$.data.string");
-        PropertyCache.cacheFromProperty(PropertiesBean.class, map);
-        Assert.assertNotNull(PropertyCache.get(PropertiesBean.class));
+        XarFactory.registerByProperty(PropertiesBean.class, map);
+        Assert.assertNotNull(XarFactory.read(PropertiesBean.class));
     }
 
     @Test
     @Order(3)
     void read() {
-        BeanMetadata<AnnotationBean> beanBeanMetadata = PropertyCache.read(AnnotationBean.class);
+        BeanMetadata<AnnotationBean> beanBeanMetadata = XarFactory.read(AnnotationBean.class);
         Assert.assertNotNull(beanBeanMetadata);
     }
 }

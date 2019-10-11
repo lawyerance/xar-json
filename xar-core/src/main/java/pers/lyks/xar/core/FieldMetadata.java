@@ -25,7 +25,7 @@ public class FieldMetadata {
     private Method method;
     private final JsonPath jsonPath;
 
-    public FieldMetadata(Class<?> clazz, Field field) {
+    FieldMetadata(Class<?> clazz, Field field) {
         this.origin = clazz;
         this.fieldName = field.getName();
         this.fieldType = field.getType();
@@ -38,13 +38,14 @@ public class FieldMetadata {
         }
     }
 
-    public FieldMetadata(Class<?> clazz, Field field, String expression) {
+    FieldMetadata(Class<?> clazz, Field field, String expression) {
         this.origin = clazz;
         this.fieldName = field.getName();
         this.fieldType = field.getType();
         declaredMethod(clazz);
         if (null == expression) {
             this.jsonPath = JsonPath.compile("$." + this.fieldName);
+            logger.warn("The field [ {} ] has not been specified jsonpath and will default json path: {}", this.fieldName, this.jsonPath);
         } else {
             this.jsonPath = JsonPath.compile(expression);
         }

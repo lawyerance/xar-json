@@ -1,7 +1,8 @@
 rootProject.name = "xar-json"
 
+include 'xar-core'
 include 'xar-converters'
 include 'xar-converters:jackson'
 include 'xar-converters:fastjson'
-include 'xar-core'
+include 'xar-converters:gson'
 

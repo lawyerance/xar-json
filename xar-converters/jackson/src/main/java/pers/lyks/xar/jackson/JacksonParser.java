@@ -49,25 +49,25 @@ public class JacksonParser implements Parser {
 
     private JsonNode node(Object obj) {
         Class<?> source = obj.getClass();
-        if (source.isAssignableFrom(Boolean.class)) {
+        if (source.isAssignableFrom(Boolean.class) || source.isAssignableFrom(boolean.class)) {
             return BooleanNode.valueOf((Boolean) obj);
         }
 
         // number
-        if (source.isAssignableFrom(Integer.class)) {
+        if (source.isAssignableFrom(Integer.class) || source.isAssignableFrom(int.class)) {
             return new IntNode((int) obj);
         }
 
-        if (source.isAssignableFrom(Long.class)) {
+        if (source.isAssignableFrom(Long.class) || source.isAssignableFrom(long.class)) {
             return new LongNode((long) obj);
         }
-        if (source.isAssignableFrom(Short.class)) {
+        if (source.isAssignableFrom(Short.class) || source.isAssignableFrom(short.class)) {
             return new ShortNode((short) obj);
         }
-        if (source.isAssignableFrom(Float.class)) {
+        if (source.isAssignableFrom(Float.class) || source.isAssignableFrom(float.class)) {
             return new FloatNode((float) obj);
         }
-        if (source.isAssignableFrom(Double.class)) {
+        if (source.isAssignableFrom(Double.class) || source.isAssignableFrom(double.class)) {
             return new DoubleNode((double) obj);
         }
         if (source.isAssignableFrom(BigInteger.class)) {
@@ -97,7 +97,6 @@ public class JacksonParser implements Parser {
             map.forEach((k, v) -> objectNode.set(k, node(v)));
             return objectNode;
         }
-        System.out.println(source);
         return NullNode.getInstance();
     }
 }

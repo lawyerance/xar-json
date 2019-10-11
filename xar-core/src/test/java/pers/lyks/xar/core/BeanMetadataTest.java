@@ -8,6 +8,7 @@ import pers.lyks.xar.bean.PropertiesBean;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * @author lawyerance
@@ -29,10 +30,10 @@ class BeanMetadataTest {
     }
 
     @Test
-    void testConstructorWithMap() {
-        Map<String, String> map = new HashMap<>();
-        map.put("str", "$.data.str");
-        BeanMetadata<PropertiesBean> beanMetadata = new BeanMetadata<>(beanClass, map);
+    void testConstructorWithProperties() {
+        Properties prop = new Properties();
+        prop.setProperty("str", "$.data.str");
+        BeanMetadata<PropertiesBean> beanMetadata = new BeanMetadata<>(beanClass, prop);
         StringBuilder builder = new StringBuilder();
         builder.append("class: ").append(typeName)
                 .append(", with fields [").append(JsonPath.compile("$.data.str").getPath()).append(" - ")

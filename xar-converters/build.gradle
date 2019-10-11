@@ -13,7 +13,8 @@ subprojects {
 
         mavenCentral()
     }
+
     dependencies {
-        implementation libraries."$project.name"
+        implementation libraries."${project.name}"
     }
 }

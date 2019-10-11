@@ -46,7 +46,12 @@ ext.libraries = [
                     force = true
                 }
         ],
-        logback:[
+        gson    : [
+                dependencies.create(group: 'com.google.code.gson', name: 'gson', version: "$gsonVersion"){
+                    force = true
+                }
+        ],
+        logback : [
                 dependencies.create("ch.qos.logback:logback-classic:$logbackVersion")
         ]
 ]

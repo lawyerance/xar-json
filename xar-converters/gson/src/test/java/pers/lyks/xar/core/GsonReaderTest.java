@@ -1,25 +1,22 @@
 package pers.lyks.xar.core;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import pers.lyks.xar.bejson.Bejson;
-import pers.lyks.xar.jackson.JacksonParser;
+import pers.lyks.xar.gson.GsonParser;
 
 /**
  * @author lawyerance
- * @version 1.0 2019-10-09
+ * @version 1.0 2019-10-11
  */
-class JacksonReaderTest extends AbstractJsonResolve {
+class GsonReaderTest extends AbstractJsonResolve {
 
-    private static ObjectMapper objectMapper = new ObjectMapper();
-
+    private GsonBuilder builder = new GsonBuilder();
 
     @Override
     protected void configuration() {
-        // configuration
-        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        builder.setDateFormat("yyyyMMdd HHmmss");
     }
 
     @Test
@@ -28,7 +25,7 @@ class JacksonReaderTest extends AbstractJsonResolve {
         XarFactory.registerByAnnotation(Bejson.class);
         Assert.assertTrue(XarFactory.contains(Bejson.class));
 
-        JsonResolve reader = new JsonResolve(configurationBuilder.build(), new JacksonParser(objectMapper));
+        JsonResolve reader = new JsonResolve(configurationBuilder.build(), new GsonParser(builder.create()));
         Bejson bejson = reader.read(is, Bejson.class);
         assertObjectEquals(bejson);
     }
@@ -39,7 +36,7 @@ class JacksonReaderTest extends AbstractJsonResolve {
         XarFactory.registerByProperty(Bejson.class, prop);
         Assert.assertTrue(XarFactory.contains(Bejson.class));
 
-        JsonResolve reader = new JsonResolve(configurationBuilder.build(), new JacksonParser(objectMapper));
+        JsonResolve reader = new JsonResolve(configurationBuilder.build(), new GsonParser(builder.create()));
         Bejson bejson = reader.read(is, Bejson.class);
 
         assertObjectEquals(bejson);

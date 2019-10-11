@@ -7,6 +7,7 @@ import lombok.Getter;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,9 +25,9 @@ public class BeanMetadata<T> {
         this.fields = Stream.of(this.clazz.getDeclaredFields()).map(item -> new FieldMetadata(this.clazz, item)).filter(FieldMetadata::hasSetter).collect(Collectors.toList());
     }
 
-    public BeanMetadata(Class<T> clazz, Map<String, String> expressionMap) {
+    public BeanMetadata(Class<T> clazz, Properties prop) {
         this.clazz = clazz;
-        this.fields = Stream.of(this.clazz.getDeclaredFields()).map(item -> new FieldMetadata(this.clazz, item, expressionMap.get(item.getName()))).filter(FieldMetadata::hasSetter).collect(Collectors.toList());
+        this.fields = Stream.of(this.clazz.getDeclaredFields()).map(item -> new FieldMetadata(this.clazz, item, prop.getProperty(item.getName()))).filter(FieldMetadata::hasSetter).collect(Collectors.toList());
     }
 
 

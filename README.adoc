@@ -8,7 +8,7 @@ XAR-JSON参考文档, Github link:https://github.com/lawyerance/xar-json/wiki[wi
 
 == 源码构建
 
-参考link:https://github.com/lawyerance/xar-json/wiki/Build-from-Source[源码构建]和link:[CONTRIBUTING.md]文件
+参考link:https://github.com/lawyerance/xar-json/wiki/Build-from-Source[源码构建]和link:CONTRIBUTING.md[CONTRIBUTING.md]文件
 
 == License
 

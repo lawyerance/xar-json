@@ -5,8 +5,8 @@ import com.jayway.jsonpath.Option;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import pers.lyks.xar.annotation.Property;
-import pers.lyks.xar.bejson.Bejson;
+import pers.lyks.xar.bejson.BejsonAnnotation;
+import pers.lyks.xar.bejson.BejsonProperty;
 import pers.lyks.xar.bejson.Snap;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public abstract class AbstractJsonResolve {
     @BeforeEach
     void setUp() throws URISyntaxException, IOException {
         configurationBuilder.options(Option.DEFAULT_PATH_LEAF_TO_NULL);
-        is = Bejson.class.getClassLoader().getResourceAsStream("pers/lyks/xar/bejson/a.json");
+        is = BejsonAnnotation.class.getClassLoader().getResourceAsStream("pers/lyks/xar/bejson/a.json");
 
         calendar.set(Calendar.MILLISECOND, 0);
 
@@ -49,25 +49,25 @@ public abstract class AbstractJsonResolve {
 
     @AfterEach
     void after() {
-        XarFactory.unregister(Bejson.class);
+        XarFactory.unregister(BejsonAnnotation.class);
     }
 
     protected abstract void configuration();
 
-    protected void assertObjectEquals(Bejson bejson) {
+    protected void assertObjectEquals(BejsonAnnotation bejsonAnnotation) {
 
-        Assert.assertTrue(bejson.isImageCompressEnable());
+        Assert.assertTrue(bejsonAnnotation.isImageCompressEnable());
 
-        Assert.assertEquals(bejson.getImageCompressBorder(), 1600L);
+        Assert.assertEquals(bejsonAnnotation.getImageCompressBorder(), 1600L);
 
-        Assert.assertEquals(bejson.getScrawlMaxSize(), 204800000133L);
+        Assert.assertEquals(bejsonAnnotation.getScrawlMaxSize(), 204800000133L);
 
-        Assert.assertEquals(bejson.getImageActionName(), "uploadimage");
+        Assert.assertEquals(bejsonAnnotation.getImageActionName(), "uploadimage");
 
-        Assert.assertEquals(bejson.getImageAllowFiles(), List.of(".png", ".jpg", ".jpeg", ".gif", ".bmp"));
+        Assert.assertEquals(bejsonAnnotation.getImageAllowFiles(), List.of(".png", ".jpg", ".jpeg", ".gif", ".bmp"));
 
         calendar.set(2019, Calendar.OCTOBER, 10, 20, 20, 21);
-        Assert.assertEquals(bejson.getCatcherTime(), calendar.getTime());
+        Assert.assertEquals(bejsonAnnotation.getCatcherTime(), calendar.getTime());
 
 
         Snap snap = new Snap();
@@ -75,6 +75,30 @@ public abstract class AbstractJsonResolve {
         calendar.set(2019, Calendar.OCTOBER, 10, 19, 20, 20);
         snap.setSnapscreenTime(calendar.getTime());
 
-        Assert.assertEquals(snap, bejson.getSnap());
+        Assert.assertEquals(snap, bejsonAnnotation.getSnap());
+    }
+
+    protected void assertObjectEquals(BejsonProperty bejsonProperty) {
+
+        Assert.assertTrue(bejsonProperty.isImageCompressEnable());
+
+        Assert.assertEquals(bejsonProperty.getImageCompressBorder(), 1600L);
+
+        Assert.assertEquals(bejsonProperty.getScrawlMaxSize(), 204800000133L);
+
+        Assert.assertEquals(bejsonProperty.getImageActionName(), "uploadimage");
+
+        Assert.assertEquals(bejsonProperty.getImageAllowFiles(), List.of(".png", ".jpg", ".jpeg", ".gif", ".bmp"));
+
+        calendar.set(2019, Calendar.OCTOBER, 10, 20, 20, 21);
+        Assert.assertEquals(bejsonProperty.getCatcherTime(), calendar.getTime());
+
+
+        Snap snap = new Snap();
+        snap.setSnapscreenActionName("uploadimage");
+        calendar.set(2019, Calendar.OCTOBER, 10, 19, 20, 20);
+        snap.setSnapscreenTime(calendar.getTime());
+
+        Assert.assertEquals(snap, bejsonProperty.getSnap());
     }
 }

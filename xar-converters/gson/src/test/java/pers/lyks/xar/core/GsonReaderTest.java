@@ -3,7 +3,8 @@ package pers.lyks.xar.core;
 import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import pers.lyks.xar.bejson.Bejson;
+import pers.lyks.xar.bejson.BejsonAnnotation;
+import pers.lyks.xar.bejson.BejsonProperty;
 import pers.lyks.xar.gson.GsonParser;
 
 /**
@@ -13,31 +14,32 @@ import pers.lyks.xar.gson.GsonParser;
 class GsonReaderTest extends AbstractJsonResolve {
 
     private GsonBuilder builder = new GsonBuilder();
+    private static JsonResolve resolve;
 
     @Override
     protected void configuration() {
         builder.setDateFormat("yyyyMMdd HHmmss");
+
+        resolve = new JsonResolve(configurationBuilder.build(), new GsonParser(builder.create()));
     }
 
     @Test
     void readAnnotation() {
-        Assert.assertFalse(XarFactory.contains(Bejson.class));
-        XarFactory.registerByAnnotation(Bejson.class);
-        Assert.assertTrue(XarFactory.contains(Bejson.class));
+        Assert.assertFalse(XarFactory.contains(BejsonAnnotation.class));
+        XarFactory.registerByAnnotation(BejsonAnnotation.class);
+        Assert.assertTrue(XarFactory.contains(BejsonAnnotation.class));
 
-        JsonResolve reader = new JsonResolve(configurationBuilder.build(), new GsonParser(builder.create()));
-        Bejson bejson = reader.read(is, Bejson.class);
-        assertObjectEquals(bejson);
+        BejsonAnnotation bejsonAnnotation = resolve.read(is, BejsonAnnotation.class);
+        assertObjectEquals(bejsonAnnotation);
     }
 
     @Test
     void readProperties() {
-        Assert.assertFalse(XarFactory.contains(Bejson.class));
-        XarFactory.registerByProperty(Bejson.class, prop);
-        Assert.assertTrue(XarFactory.contains(Bejson.class));
+        Assert.assertFalse(XarFactory.contains(BejsonProperty.class));
+        XarFactory.registerByProperty(BejsonProperty.class, prop);
+        Assert.assertTrue(XarFactory.contains(BejsonProperty.class));
 
-        JsonResolve reader = new JsonResolve(configurationBuilder.build(), new GsonParser(builder.create()));
-        Bejson bejson = reader.read(is, Bejson.class);
+        BejsonProperty bejson = resolve.read(is, BejsonProperty.class);
 
         assertObjectEquals(bejson);
     }

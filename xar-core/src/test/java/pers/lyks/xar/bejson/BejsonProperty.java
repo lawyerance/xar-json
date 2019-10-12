@@ -15,27 +15,20 @@ import java.util.List;
  */
 @Setter
 @Getter
-public class Bejson {
-    @Property("$.imageActionName")
+public class BejsonProperty {
     private String imageActionName;
 
-    @Property("$.imageAllowFiles")
     private List<String> imageAllowFiles;
 
-    @Property("$.imageCompressEnable")
     private boolean imageCompressEnable;
 
-    @Property("$.imageCompressBorder")
     private long imageCompressBorder;
 
-    @Property("$.scrawlMaxSize")
     private long scrawlMaxSize;
 
-    @Property("$.snap.catcherTime")
     @JsonFormat(pattern = "yyyyMMdd HHmmss", timezone = "GMT+8")
     @JSONField(format = "yyyyMMdd HHmmss")
     private Date catcherTime;
 
-    @Property("$.snap")
     private Snap snap;
 }

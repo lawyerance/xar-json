@@ -1,1 +1,10 @@
 = XAR JSON
+
+XAR-JSON是一个使用link:https://github.com/dchester/jsonpath[jsonpath]将json转化为指定javabean的工具包
+
+== 参考文档
+XAR-JSON参考文档, Github link:https://github.com/lawyerance/xar-json/wiki[wiki pages]
+
+== 源码构建
+
+参考link:https://github.com/lawyerance/xar-json/wiki/Build-from-Source[源码构建]和link:CONTRIBUTING.md文件

@@ -11,7 +11,12 @@ buildscript {
     }
 }
 
+plugins {
+    id 'maven-publish'
+}
+
 apply plugin: 'idea'
+
 
 idea {
     module {
@@ -24,9 +29,12 @@ idea {
 allprojects {
     apply from: rootProject.file("gradle/dependencies.gradle")
 
+    group "$projectGroup"
+    version "$projectVersion"
 }
-subprojects {
 
+
+subprojects {
     apply plugin: 'java'
     apply plugin: "com.github.spotbugs"
 
@@ -39,10 +47,11 @@ subprojects {
         mavenCentral()
     }
 
-    dependencies {
-        implementation libraries.jsonpath
 
-        implementation libraries.slf4j
+    dependencies {
+        compile libraries.jsonpath
+
+        compile libraries.slf4j
 
         testImplementation libraries.jupiter
 

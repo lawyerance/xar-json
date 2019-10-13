@@ -1,13 +1,6 @@
-allprojects {
+subprojects {
     apply plugin: 'java'
 
-    dependencies {
-        implementation project(":xar-core")
-
-        testImplementation project(path: ":xar-core", configuration: 'tests')
-    }
-}
-subprojects {
     repositories {
         mavenLocal()
 
@@ -15,6 +8,10 @@ subprojects {
     }
 
     dependencies {
-        implementation libraries."${project.name}"
+        compileOnly project(":xar-core")
+
+        testImplementation project(path: ":xar-core", configuration: 'tests')
+
+        compileOnly(libraries."${project.name}")
     }
 }

@@ -5,4 +5,7 @@ include 'xar-converters'
 include 'xar-converters:jackson'
 include 'xar-converters:fastjson'
 include 'xar-converters:gson'
+include 'release'
+
+rootProject.children.find { "release" == "${it.name}" }.name = "xar-api"
 

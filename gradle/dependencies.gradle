@@ -33,8 +33,9 @@ ext.libraries = [
         ],
         jsonpath: [
                 dependencies.create("com.jayway.jsonpath:json-path:$jsonpathVersion") {
+                    exclude(group: "org.slf4j", module: 'slf4j-api')
                     force = true
-                }
+                },
         ],
         jackson : [
                 dependencies.create("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion") {
@@ -47,7 +48,7 @@ ext.libraries = [
                 }
         ],
         gson    : [
-                dependencies.create(group: 'com.google.code.gson', name: 'gson', version: "$gsonVersion"){
+                dependencies.create(group: 'com.google.code.gson', name: 'gson', version: "$gsonVersion") {
                     force = true
                 }
         ],

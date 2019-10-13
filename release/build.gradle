@@ -1,0 +1,75 @@
+plugins {
+    id 'java-library'
+}
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+configurations {
+    coroutines
+}
+
+dependencies {
+    coroutines project(":xar-core")
+
+    coroutines project(":xar-converters:jackson")
+    coroutines project(":xar-converters:fastjson")
+    coroutines project(":xar-converters:gson")
+}
+
+jar {
+
+    dependsOn configurations.coroutines
+
+    def module_file_names = configurations.coroutines.dependencies.collect { it.name + '-' + it.version + ".jar" }
+
+    def module_files = configurations.coroutines.findAll { module_file_names.contains(it.name) }
+
+    from {
+        module_files.collect { zipTree(it) }
+    }
+
+    manifest {
+        attributes(
+                "Implementation-Title": project.name,
+                "Implementation-Version": project.version
+        )
+    }
+}
+
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories {
+//        mavenDeployer {
+//
+//            repository(url: uri('C:\\Users\\xiongshiyan\\.m2\\repository')) //定义本地maven仓库的地址
+//            pom.project {
+//                version version
+//                artifactId ARTIFACT_ID
+//                groupId group
+//                packaging TYPE
+//                description DESCRIPTION
+//            }
+//        }
+//    }
+//}
+
+publishing {
+
+    publications {
+        mavenJava(MavenPublication) {
+            groupId "$project.group"
+            artifactId "$project.name"
+            version "$project.version"
+
+            from components.java
+        }
+    }
+
+    repositories {
+        mavenLocal()
+    }
+}

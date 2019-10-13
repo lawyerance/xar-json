@@ -10,6 +10,7 @@ dependencies {
 
     testImplementation libraries.fastjson
 
+
 }
 
 task testsJar(type: Jar, dependsOn: testClasses) {

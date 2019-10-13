@@ -20,9 +20,10 @@ dependencies {
     coroutines project(":xar-converters:gson")
 }
 
+
 jar {
 
-    dependsOn configurations.coroutines
+    dependsOn configurations.coroutines.allArtifacts
 
     def module_file_names = configurations.coroutines.dependencies.collect { it.name + '-' + it.version + ".jar" }
 
@@ -66,6 +67,25 @@ publishing {
             version "$project.version"
 
             from components.java
+
+            pom {
+                name = "$project.name"
+                description = 'XAR-JSON '
+                url = 'https://github.com/lawyerance/xar-json/**/'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'lawyerance'
+                        name = 'lawyerance'
+                        email = 'lawyerance@gmail.com'
+                    }
+                }
+            }
         }
     }
 

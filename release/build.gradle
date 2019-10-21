@@ -9,7 +9,9 @@ repositories {
 }
 
 configurations {
-    coroutines
+    coroutines {
+        transitive = false
+    }
 }
 
 dependencies {
@@ -20,17 +22,23 @@ dependencies {
     coroutines project(":xar-converters:gson")
 }
 
+task sourcesJar(type: Jar) {
+    def module_projects = configurations.coroutines.dependencies.collect {
+        it.getDependencyProject()
+    }
+    module_projects.each {
+        from it.sourceSets.main.allSource
+    }
+    archiveClassifier.set('sources')
+}
+
 
 jar {
 
-    dependsOn configurations.coroutines.allArtifacts
-
-    def module_file_names = configurations.coroutines.dependencies.collect { it.name + '-' + it.version + ".jar" }
-
-    def module_files = configurations.coroutines.findAll { module_file_names.contains(it.name) }
+    dependsOn configurations.coroutines
 
     from {
-        module_files.collect { zipTree(it) }
+        configurations.coroutines.findAll { true }.collect { zipTree(it) }
     }
 
     manifest {
@@ -67,6 +75,8 @@ publishing {
             version "$project.version"
 
             from components.java
+
+            artifact sourcesJar
 
             pom {
                 name = "$project.name"

@@ -49,22 +49,6 @@ jar {
     }
 }
 
-//uploadArchives {
-//    configuration = configurations.archives
-//    repositories {
-//        mavenDeployer {
-//
-//            repository(url: uri('C:\\Users\\xiongshiyan\\.m2\\repository')) //定义本地maven仓库的地址
-//            pom.project {
-//                version version
-//                artifactId ARTIFACT_ID
-//                groupId group
-//                packaging TYPE
-//                description DESCRIPTION
-//            }
-//        }
-//    }
-//}
 
 publishing {
 
